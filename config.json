@@ -1,0 +1,17 @@
+{ 
+  "SEED": 42,
+  "INIT_TIME": 0,
+  "FIN_TIME": 100000,
+  "ARRIVE_MIN": 10,
+  "ARRIVE_MAX": 50,
+  "QUIT_PROB": 20,
+  "NETWORK_PROB": 30,
+  "CPU_MIN": 20,
+  "CPU_MAX": 30,
+  "DISK1_MIN": 30,
+  "DISK1_MAX": 70,
+  "DISK2_MIN": 70,
+  "DISK2_MAX": 80,
+  "NETWORK_MIN": 20,
+  "NETWORK_MAX": 40
+}
