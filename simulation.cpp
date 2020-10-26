@@ -1,3 +1,4 @@
+#include "simulation.h"
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -8,61 +9,6 @@
 #include <ctime>
 using namespace std;
 using json = nlohmann::json;
-
-// Global variables for now
-int SEED;
-int INIT_TIME;
-int FIN_TIME;
-int ARRIVE_MIN;     
-int ARRIVE_MAX;    
-int QUIT_PROB;      // probability that it will quit the system (or another loop)
-int NETWORK_PROB;   // probability it will go to network (or disk)
-int CPU_MIN;      
-int CPU_MAX;     
-int DISK1_MIN;  
-int DISK1_MAX; 
-int DISK2_MIN;
-int DISK2_MAX;     
-int NETWORK_MIN; 
-int NETWORK_MAX;
-
-// Event type values
-const int SYSTEM_ARRIVAL = 0;
-const int SYSTEM_EXIT = 1;
-const int CPU_ARRIVAL = 2;
-const int CPU_EXIT = 3;
-const int DISK1_ARRIVAL = 4;
-const int DISK1_EXIT = 5;
-const int DISK2_ARRIVAL = 6;
-const int DISK2_EXIT = 7;
-const int NETWORK_ARRIVAL = 8;
-const int NETWORK_EXIT = 9;
-const int SIMULATION_END = 10;
-
-// Device status identifiers
-bool CPU_BUSY;
-bool DISK1_BUSY;
-bool DISK2_BUSY;
-bool NETWORK_BUSY;
-
-// Global simulation clock
-int current_time = INIT_TIME;
-
-int ID = -1;
-
-// This is the struct for event
-typedef struct Event {
-  int ID;               // job ID      
-  int event_type;       // event type  
-  int time_arrival;     // clock time (current_time + time)
-}Event;
-
-// This is the struct that implements the operator overloading
-struct CompareTimeArrival {
-  bool operator() (Event const& e1, Event const& e2) {
-    return e1.time_arrival > e2.time_arrival;
-  }
-};
 
 // Loads a config from json
 void loadConfig(string filename) {

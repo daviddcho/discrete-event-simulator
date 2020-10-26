@@ -1,9 +1,37 @@
-#ifndef SIMULATION.H
+#ifndef SIMULATION_H
 #define SIMULATION_H
 
 #include <iostream>
 
 using namespace std;
+
+// Global variables for now
+int SEED;
+int INIT_TIME;
+int FIN_TIME;
+int ARRIVE_MIN;     
+int ARRIVE_MAX;    
+int QUIT_PROB;      // probability that it will quit the system (or another loop)
+int NETWORK_PROB;   // probability it will go to network (or disk)
+int CPU_MIN;      
+int CPU_MAX;     
+int DISK1_MIN;  
+int DISK1_MAX; 
+int DISK2_MIN;
+int DISK2_MAX;     
+int NETWORK_MIN; 
+int NETWORK_MAX;
+
+// Device status identifiers
+bool CPU_BUSY;
+bool DISK1_BUSY;
+bool DISK2_BUSY;
+bool NETWORK_BUSY;
+
+// Global simulation clock
+int current_time = INIT_TIME;
+
+int ID = -1;
 
 // Event type values
 const int SYSTEM_ARRIVAL = 0;
