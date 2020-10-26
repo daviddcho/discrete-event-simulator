@@ -2,6 +2,13 @@
 #define SIMULATION_H
 
 #include <iostream>
+#include <string>
+#include <sstream>
+#include <queue>
+#include <fstream>
+#include <cstdlib>
+#include <ctime>
+
 
 using namespace std;
 
@@ -28,10 +35,12 @@ bool DISK1_BUSY;
 bool DISK2_BUSY;
 bool NETWORK_BUSY;
 
+
 // Global simulation clock
 int current_time = INIT_TIME;
-
+// Global event ID
 int ID = -1;
+
 
 // Event type values
 const int SYSTEM_ARRIVAL = 0;
@@ -64,10 +73,17 @@ struct CompareTimeArrival {
   }
 };
 
-
 // Creates a new ID for new event
 int newID();
 
+// Load config
+void loadConfig(string filename); 
+
+// Log simulation
+vector<Event> eventLog;
+void captureEvent(Event event);
+void logData(vector<Event> eventLog);
+string printEventType(Event event); 
 
 
 #endif
