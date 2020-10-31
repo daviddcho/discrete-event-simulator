@@ -22,7 +22,7 @@ void handleSYSTEM_ARRIVAL(Event &event, priority_queue<Event, vector<Event>, Com
     // Calculating time of CPU Arrival
     int time_arrival = getTime(getARRIVE_MIN(), getARRIVE_MAX());
     // Storing CPU response time
-    setRespTimeCPU(time_arrival - current_time);
+    setRespTimeCPU(time_arrival - getCurrentTime());
     
     eventQueue.push(newEvent(event.ID, CPU_ARRIVAL, time_arrival));
     //print_queue(eventQueue);
@@ -42,7 +42,7 @@ void handleCPU_ARRIVAL(Event &event, priority_queue<Event, vector<Event>, Compar
   // Calculating amount of time process will be in CPU
   int time_arrival = getTime(getCPU_MIN(), getCPU_MAX());
   // Recording how long it will be in the CPU
-  setTotalUtilCPU(time_arrival - current_time);
+  setTotalUtilCPU(time_arrival - getCurrentTime());
 
   // Create a new CPU_EXIT event (telling process to leave at finishing time)  
   eventQueue.push(newEvent(event.ID , CPU_EXIT, time_arrival));
@@ -57,7 +57,7 @@ void handleCPU_EXIT(Event &event, priority_queue<Event, vector<Event>, CompareTi
 
   // quit system probability
   if (quitSystemProb()) { 
-    eventQueue.push(newEvent(event.ID, SYSTEM_EXIT, current_time));
+    eventQueue.push(newEvent(event.ID, SYSTEM_EXIT, getCurrentTime()));
   } else { // If stays in system 
     // If goes to network
     if(networkProb()) {
@@ -66,7 +66,7 @@ void handleCPU_EXIT(Event &event, priority_queue<Event, vector<Event>, CompareTi
       } else {
         int time_arrival = getTime(getARRIVE_MIN(), getARRIVE_MAX());
         // Storing Network response time
-        setRespTimeNETWORK(time_arrival - current_time);
+        setRespTimeNETWORK(time_arrival - getCurrentTime());
         eventQueue.push(newEvent(event.ID, NETWORK_ARRIVAL, time_arrival));
       }
     } else { // If goes to DISK 
@@ -79,7 +79,7 @@ void handleCPU_EXIT(Event &event, priority_queue<Event, vector<Event>, CompareTi
         } else { // If DISK is not busy, go to DISK
           int time_arrival = getTime(getARRIVE_MIN(), getARRIVE_MAX());
           // Storing Disk1 response time
-          setRespTimeDISK1(time_arrival - current_time);
+          setRespTimeDISK1(time_arrival - getCurrentTime());
           eventQueue.push(newEvent(event.ID, DISK1_ARRIVAL, time_arrival));
         }
       } else {
@@ -89,7 +89,7 @@ void handleCPU_EXIT(Event &event, priority_queue<Event, vector<Event>, CompareTi
         } else { // If DISK2 is not busy, go to DISK2
           int time_arrival = getTime(getARRIVE_MIN(), getARRIVE_MAX());
           // Storing Disk2 response time
-          setRespTimeDISK2(time_arrival - current_time);
+          setRespTimeDISK2(time_arrival - getCurrentTime());
           eventQueue.push(newEvent(event.ID, DISK2_ARRIVAL, time_arrival));
         }
       }
@@ -103,7 +103,7 @@ void handleCPU_EXIT(Event &event, priority_queue<Event, vector<Event>, CompareTi
     CPU_queue.pop();
     
     // Storing CPU response time stats
-    setRespTimeCPU(current_time - job.time_arrival);
+    setRespTimeCPU(getCurrentTime() - job.time_arrival);
 
     // Go to CPU with set usage time
     eventQueue.push(newEvent(job.ID, CPU_ARRIVAL, getTime(getCPU_MIN(), getCPU_MAX())));
@@ -117,7 +117,7 @@ void handleDISK1_ARRIVAL(Event &event, priority_queue<Event, vector<Event>, Comp
   // Calculating how long process will use DISK1
   int time_arrival = getTime(getDISK1_MIN(), getDISK1_MAX());
   // Storing usage time 
-  setTotalUtilDISK1(time_arrival - current_time);
+  setTotalUtilDISK1(time_arrival - getCurrentTime());
 
   // Create a new DISK1 event (telling process to leave at finishing time)
   eventQueue.push(newEvent(event.ID, DISK1_EXIT, time_arrival));
@@ -146,7 +146,7 @@ void handleDISK1_EXIT(Event &event, priority_queue<Event, vector<Event>, Compare
     DISK1_queue.pop();
 
     // Storing CPU response time stats 
-    setRespTimeDISK1(current_time - job.time_arrival);
+    setRespTimeDISK1(getCurrentTime() - job.time_arrival);
 
     // Go to DISK1 with set usage time
     eventQueue.push(newEvent(job.ID, DISK1_ARRIVAL, getTime(getDISK1_MIN(), getDISK1_MAX())));
@@ -160,7 +160,7 @@ void handleDISK2_ARRIVAL(Event &event, priority_queue<Event, vector<Event>, Comp
   // Calculating how long process wil use DISK2
   int time_arrival = getTime(getDISK2_MIN(), getDISK2_MAX());
   // Sotring usage time
-  setTotalUtilDISK2(time_arrival - current_time);
+  setTotalUtilDISK2(time_arrival - getCurrentTime());
 
   // Create a new DISK2 EXIT event (telling process to leave at finishing time)
   eventQueue.push(newEvent(event.ID, DISK2_EXIT, time_arrival));
@@ -188,7 +188,7 @@ void handleDISK2_EXIT(Event &event, priority_queue<Event, vector<Event>, Compare
     DISK2_queue.pop();
 
     // Storing CPU response time stats 
-    setRespTimeDISK2(current_time - job.time_arrival);
+    setRespTimeDISK2(getCurrentTime() - job.time_arrival);
 
     // Go to DISK1 with set usage time
     eventQueue.push(newEvent(job.ID, DISK2_ARRIVAL, getTime(getDISK2_MIN(), getDISK2_MAX())));
@@ -203,7 +203,7 @@ void handleNETWORK_ARRIVAL(Event &event, priority_queue<Event, vector<Event>, Co
   // Calculating how long process will use NETWORK 
   int time_arrival = getTime(getNETWORK_MIN(), getNETWORK_MAX());
   // Storing usage time
-  setTotalUtilNETWORK(time_arrival - current_time);
+  setTotalUtilNETWORK(time_arrival - getCurrentTime());
 
   // Create a new NETWORK EXIT event (telling process to leave at finishing time)
   eventQueue.push(newEvent(event.ID, NETWORK_EXIT, time_arrival));
@@ -231,7 +231,7 @@ void handleNETWORK_EXIT(Event &event, priority_queue<Event, vector<Event>, Compa
     NETWORK_queue.pop();
 
     // Storing CPU response time stats 
-    setRespTimeNETWORK(current_time - job.time_arrival);
+    setRespTimeNETWORK(getCurrentTime() - job.time_arrival);
 
     // Go to DISK1 with set usage time
     eventQueue.push(newEvent(job.ID, NETWORK_ARRIVAL, getTime(getNETWORK_MIN(), getNETWORK_MAX())));

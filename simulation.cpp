@@ -33,7 +33,7 @@ int getTime(int min, int max) {
   //srand(SEED);
   int time = rand() % max + min;
   //cout << "time:" << time << '\n';
-  time += current_time;
+  time += getCurrentTime();
   
   return time;
 }
@@ -136,15 +136,16 @@ int main () {
   eventQueue.push(newEvent(newID(), SYSTEM_ARRIVAL, getINIT_TIME())); 
   Event event; 
 
-  while (!eventQueue.empty() && current_time < getFIN_TIME()) {
+  while (!eventQueue.empty() && getCurrentTime() < getFIN_TIME()) {
 
     setEQ(eventQueue.size());
 
     event = eventQueue.top(); 
     eventQueue.pop();
 
-    current_time = event.time_arrival;
-    
+    //current_time = event.time_arrival;
+    addCurrentTime(event.time_arrival); 
+
     cout << "At time: " << event.time_arrival << " Job" << event.ID << " " << printEventType(event) << '\n';
     //cout << "Event ID:" << event.ID << " type:" << printEventType(event) << " time:" << event.time_arrival << '\n'; 
     // saves event into a vector

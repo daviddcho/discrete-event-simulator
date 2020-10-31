@@ -12,6 +12,8 @@
 
 using namespace std;
 
+
+// Get functions for config variables
 int getSEED();
 int getINIT_TIME();
 int getFIN_TIME();
@@ -29,7 +31,10 @@ int getNETWORK_MIN();
 int getNETWORK_MAX(); 
 
 // Global simulation clock
-int current_time = getINIT_TIME();
+//int current_time = getINIT_TIME();
+int getCurrentTime();
+int addCurrentTime(int time);
+
 // Global event ID
 int ID = -1;
 
