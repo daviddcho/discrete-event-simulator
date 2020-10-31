@@ -1,5 +1,5 @@
 { 
-  "SEED": 42,
+  "SEED": 37,
   "INIT_TIME": 0,
   "FIN_TIME": 100000,
   "ARRIVE_MIN": 10,
