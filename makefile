@@ -1,7 +1,7 @@
 CC = g++ 
 CFLAGS = -Wall -Werror
-FILES = simulation.cpp load_config.cpp write_log.cpp
+FILES = simulation.cpp load_config.cpp handlers.cpp statistics.cpp
 
-simulation: simulation.cpp
-	$(CC) -o mysim $(FILES)
+mysim: simulation.cpp
+	$(CC) $(FILES) $(CFLAGS)
 

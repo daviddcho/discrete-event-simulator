@@ -35,11 +35,11 @@ bool DISK1_BUSY;
 bool DISK2_BUSY;
 bool NETWORK_BUSY;
 
-
 // Global simulation clock
 int current_time = INIT_TIME;
 // Global event ID
 int ID = -1;
+
 
 
 // Event type values
@@ -73,17 +73,74 @@ struct CompareTimeArrival {
   }
 };
 
+int getTime(int min, int max);
+
 // Creates a new ID for new event
 int newID();
 
 // Load config
 void loadConfig(string filename); 
 
+
 // Log simulation
 vector<Event> eventLog;
+
 void captureEvent(Event event);
 void logData(vector<Event> eventLog);
 string printEventType(Event event); 
+
+
+// My component queues
+queue<Event> CPU_queue;
+queue<Event> DISK1_queue;
+queue<Event> DISK2_queue;
+queue<Event> NETWORK_queue;
+
+void handleSYSTEM_ARRIVAL(Event &event, priority_queue<Event, vector<Event>, CompareTimeArrival> &eventQueue); 
+void handleSYSTEM_EXIT(Event &event, priority_queue<Event, vector<Event>, CompareTimeArrival> &eventQueue);
+void handleCPU_ARRIVAL(Event &event, priority_queue<Event, vector<Event>, CompareTimeArrival> &eventQueue); 
+void handleCPU_EXIT(Event &event, priority_queue<Event, vector<Event>, CompareTimeArrival> &eventQueue);
+void handleDISK1_ARRIVAL(Event &event, priority_queue<Event, vector<Event>, CompareTimeArrival> &eventQueue); 
+void handleDISK1_EXIT(Event &event, priority_queue<Event, vector<Event>, CompareTimeArrival> &eventQueue);
+void handleDISK2_ARRIVAL(Event &event, priority_queue<Event, vector<Event>, CompareTimeArrival> &eventQueue); 
+void handleDISK2_EXIT(Event &event, priority_queue<Event, vector<Event>, CompareTimeArrival> &eventQueue); 
+void handleNETWORK_ARRIVAL(Event &event, priority_queue<Event, vector<Event>, CompareTimeArrival> &eventQueue);
+void handleNETWORK_EXIT(Event &event, priority_queue<Event, vector<Event>, CompareTimeArrival> &eventQueue); 
+void handleSIMULATION_END(Event &event, priority_queue<Event, vector<Event>, CompareTimeArrival> &eventQueue);
+
+// Stat 
+bool quitSystemProb();
+bool networkProb();
+double getThruPutCPU();
+double getThruPutDISK1();
+double getThruPutDISK2();
+double getThruPutNETWORK();
+void setRespTimeCPU(int respTime);
+void setRespTimeDISK1(int respTime);
+void setRespTimeDISK2(int respTime);
+void setRespTimeNETWORK(int respTime);
+void setTotalUtilCPU(int time);
+void setTotalUtilDISK1(int time);
+void setTotalUtilDISK2(int time);
+void setTotalUtilNETWORK(int time);
+void setEQ(int size);
+void setCPUQ(int size);
+void setD1Q(int size);
+void setD2Q(int size);
+void setNQ(int size);
+void simStats();
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 #endif
