@@ -13,28 +13,6 @@ using json = nlohmann::json;
 
 using namespace std;
 
-// Loads a config from json
-void loadConfig(string filename) {
-  ifstream file(filename);
-  json config = json::parse(file);
-
-  SEED = config["SEED"];
-  INIT_TIME = config["INIT_TIME"];
-  FIN_TIME  = config["FIN_TIME"];
-  ARRIVE_MIN  = config["ARRIVE_MIN"];
-  ARRIVE_MAX = config["ARRIVE_MAX"];
-  QUIT_PROB = config["QUIT_PROB"];
-  NETWORK_PROB = config["NETWORK_PROB"];
-  CPU_MIN  = config["CPU_MIN"];
-  CPU_MAX = config["CPU_MAX"];
-  DISK1_MIN = config["DISK1_MIN"];
-  DISK1_MAX = config["DISK1_MAX"];
-  DISK2_MIN = config["DISK2_MIN"];
-  DISK2_MAX = config["DISK2_MAX"];
-  NETWORK_MIN = config["NETWORK_MIN"];
-  NETWORK_MAX = config["NETWORK_MAX"];
-}
-
 // Creates a new event
 Event newEvent(int ID, int event_type, int time_arrival) {
   Event event;
@@ -152,13 +130,13 @@ int main () {
   // Creating event queue 
   priority_queue<Event, vector<Event>, CompareTimeArrival> eventQueue;
   
-  srand(SEED);
+  srand(getSEED());
   
-  eventQueue.push(newEvent(newID(), SIMULATION_END, FIN_TIME));
-  eventQueue.push(newEvent(newID(), SYSTEM_ARRIVAL, INIT_TIME)); 
+  eventQueue.push(newEvent(newID(), SIMULATION_END, getFIN_TIME()));
+  eventQueue.push(newEvent(newID(), SYSTEM_ARRIVAL, getINIT_TIME())); 
   Event event; 
 
-  while (!eventQueue.empty() && current_time < FIN_TIME) {
+  while (!eventQueue.empty() && current_time < getFIN_TIME()) {
 
     setEQ(eventQueue.size());
 

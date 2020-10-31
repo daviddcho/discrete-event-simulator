@@ -7,7 +7,7 @@ bool quitSystemProb() {
   //srand((unsigned) time(0)); 
   int random = rand() % 100 + 1;
   //cout << "system:" << random << '\n';
-  if (random > QUIT_PROB) {
+  if (random > getQUIT_PROB()) {
     // not leaving system
     return false;
   }
@@ -20,7 +20,7 @@ bool networkProb() {
   //srand((unsigned) time(0));
   int random = rand() % 100 + 1;
   //cout << "network:" << random << '\n';
-  if (random > NETWORK_PROB) {
+  if (random > getNETWORK_PROB()) {
     // go to disk
     return false;
   }
@@ -75,16 +75,16 @@ int thruPutNETWORK;
 
 
 double getThruPutCPU() {
-  return (double) countCPUQ / (double) FIN_TIME;
+  return (double) countCPUQ / (double) getFIN_TIME();
 }
 double getThruPutDISK1() {
-  return (double) countD1Q / (double) FIN_TIME;
+  return (double) countD1Q / (double) getFIN_TIME();
 }
 double getThruPutDISK2() {
-  return (double) countD2Q / (double) FIN_TIME;
+  return (double) countD2Q / (double) getFIN_TIME();
 }
 double getThruPutNETWORK() {
-  return (double) countNQ / (double) FIN_TIME;
+  return (double) countNQ / (double) getFIN_TIME();
 }
 
 
@@ -134,16 +134,16 @@ void setTotalUtilNETWORK(int time) {
 }
 // Calcuating component utilization
 double getUtilCPU(int totalUtilCPU) {
-  return ((double)totalUtilCPU / (double)FIN_TIME);
+  return ((double)totalUtilCPU / (double)getFIN_TIME());
 }
 double getUtilDISK1(int totalUtilDISK1) {
-  return ((double)totalUtilDISK1 / (double)FIN_TIME);
+  return ((double)totalUtilDISK1 / (double)getFIN_TIME());
 }
 double getUtilDISK2(int totalUtilDISK2) {
-return ((double)totalUtilDISK2 / (double)FIN_TIME);
+return ((double)totalUtilDISK2 / (double)getFIN_TIME());
 }
 double getUtilNETWORK(int totalUtilCPU) {
-  return ((double)totalUtilNETWORK / (double)FIN_TIME);
+  return ((double)totalUtilNETWORK / (double)getFIN_TIME());
 }
 
 

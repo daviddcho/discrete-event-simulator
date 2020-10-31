@@ -12,34 +12,26 @@
 
 using namespace std;
 
-// Global variables for now
-int SEED;
-int INIT_TIME;
-int FIN_TIME;
-int ARRIVE_MIN;     
-int ARRIVE_MAX;    
-int QUIT_PROB;      // probability that it will quit the system (or another loop)
-int NETWORK_PROB;   // probability it will go to network (or disk)
-int CPU_MIN;      
-int CPU_MAX;     
-int DISK1_MIN;  
-int DISK1_MAX; 
-int DISK2_MIN;
-int DISK2_MAX;     
-int NETWORK_MIN; 
-int NETWORK_MAX;
-
-// Device status identifiers
-bool CPU_BUSY;
-bool DISK1_BUSY;
-bool DISK2_BUSY;
-bool NETWORK_BUSY;
+int getSEED();
+int getINIT_TIME();
+int getFIN_TIME();
+int getARRIVE_MIN();
+int getARRIVE_MAX();
+int getQUIT_PROB(); 
+int getNETWORK_PROB();
+int getCPU_MIN(); 
+int getCPU_MAX();
+int getDISK1_MIN(); 
+int getDISK1_MAX(); 
+int getDISK2_MIN(); 
+int getDISK2_MAX(); 
+int getNETWORK_MIN(); 
+int getNETWORK_MAX(); 
 
 // Global simulation clock
-int current_time = INIT_TIME;
+int current_time = getINIT_TIME();
 // Global event ID
 int ID = -1;
-
 
 
 // Event type values
@@ -89,12 +81,6 @@ void captureEvent(Event event);
 void logData(vector<Event> eventLog);
 string printEventType(Event event); 
 
-
-// My component queues
-queue<Event> CPU_queue;
-queue<Event> DISK1_queue;
-queue<Event> DISK2_queue;
-queue<Event> NETWORK_queue;
 
 void handleSYSTEM_ARRIVAL(Event &event, priority_queue<Event, vector<Event>, CompareTimeArrival> &eventQueue); 
 void handleSYSTEM_EXIT(Event &event, priority_queue<Event, vector<Event>, CompareTimeArrival> &eventQueue);
