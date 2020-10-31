@@ -35,8 +35,9 @@ int getCurrentTime();
 int addCurrentTime(int time);
 
 // Global event ID
-int ID = -1;
-
+//int ID = -1;
+int getID();
+int newID();
 
 // Event type values
 const int SYSTEM_ARRIVAL = 0;
