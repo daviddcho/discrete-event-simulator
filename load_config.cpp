@@ -2,7 +2,7 @@
 #include <nlohmann/json.hpp>
 #include <fstream>
 using json = nlohmann::json;
-
+/*
 // Loads a config from json
 void loadConfig(string filename) {
   ifstream file(filename);
@@ -24,4 +24,4 @@ void loadConfig(string filename) {
   NETWORK_MIN = config["NETWORK_MIN"];
   NETWORK_MAX = config["NETWORK_MAX"];
 }
-
+*/
