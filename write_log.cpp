@@ -3,6 +3,10 @@
 #include <fstream>
 using json = nlohmann::json;
 
+
+vector<Event> eventLog;
+
+
 // Prints event type 
 string printEventType(Event event) {
   int type = event.event_type;
@@ -48,6 +52,7 @@ void captureEvent(Event event) {
   eventLog.insert(eventLog.end(), event); 
 }
 
+
 // Writing to a log file with values of significant events
 void logData(vector<Event> eventLog) {
   ofstream writelog("log.txt");
@@ -76,4 +81,9 @@ void logData(vector<Event> eventLog) {
     }
   }
   writelog.close();
+}
+
+
+vector<Event> getEventLog() {
+  return eventLog;
 }

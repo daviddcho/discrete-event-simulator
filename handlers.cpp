@@ -240,7 +240,7 @@ void handleNETWORK_EXIT(Event &event, priority_queue<Event, vector<Event>, Compa
 }
 void handleSIMULATION_END(Event &event, priority_queue<Event, vector<Event>, CompareTimeArrival> &eventQueue) {
   // writes a log file
-  logData(eventLog);
+  logData(getEventLog());
   simStats();
   // exit program
   exit(0);

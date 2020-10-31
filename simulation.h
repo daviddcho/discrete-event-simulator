@@ -31,7 +31,6 @@ int getNETWORK_MIN();
 int getNETWORK_MAX(); 
 
 // Global simulation clock
-//int current_time = getINIT_TIME();
 int getCurrentTime();
 int addCurrentTime(int time);
 
@@ -80,8 +79,7 @@ void loadConfig(string filename);
 
 
 // Log simulation
-vector<Event> eventLog;
-
+vector<Event> getEventLog();
 void captureEvent(Event event);
 void logData(vector<Event> eventLog);
 string printEventType(Event event); 
