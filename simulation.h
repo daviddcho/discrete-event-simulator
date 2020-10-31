@@ -29,12 +29,6 @@ int DISK2_MAX;
 int NETWORK_MIN; 
 int NETWORK_MAX;
 
-// Device status identifiers
-bool CPU_BUSY;
-bool DISK1_BUSY;
-bool DISK2_BUSY;
-bool NETWORK_BUSY;
-
 
 // Global simulation clock
 int current_time = INIT_TIME;
