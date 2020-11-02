@@ -32,7 +32,7 @@ int getNETWORK_MAX();
 
 // Global simulation clock
 int getCurrentTime();
-int addCurrentTime(int time);
+int setCurrentTime(int time);
 
 // Global event ID
 //int ID = -1;

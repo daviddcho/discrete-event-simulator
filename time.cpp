@@ -8,8 +8,9 @@ int getCurrentTime() {
 }
 
 
-int addCurrentTime(int time) {
-  return current_time + time;
+int setCurrentTime(int time) {
+  current_time = time;  
+  return current_time;
 }
 
 
@@ -17,7 +18,6 @@ int addCurrentTime(int time) {
 int getTime(int min, int max) {
   //srand(SEED);
   int time = rand() % max + min;
-  //cout << "time:" << time << '\n';
   time += getCurrentTime();
   
   return time;

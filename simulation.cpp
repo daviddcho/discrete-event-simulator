@@ -46,11 +46,10 @@ int main () {
     eventQueue.pop();
 
     //current_time = event.time_arrival;
-    addCurrentTime(event.time_arrival); 
+    setCurrentTime(event.time_arrival); 
 
     cout << "At time: " << event.time_arrival << " Job" << event.ID << " " << printEventType(event) << '\n';
-    //cout << "Event ID:" << event.ID << " type:" << printEventType(event) << " time:" << event.time_arrival << '\n'; 
-    // saves event into a vector
+   // saves event into a vector
     captureEvent(event);
 
     switch(event.event_type) {
