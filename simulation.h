@@ -1,6 +1,7 @@
 #ifndef SIMULATION_H
 #define SIMULATION_H
 
+
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -30,14 +31,20 @@ int getDISK2_MAX();
 int getNETWORK_MIN(); 
 int getNETWORK_MAX(); 
 
+
 // Global simulation clock
 int getCurrentTime();
 int setCurrentTime(int time);
 
+
+// Returns a random time between the min and max
+int getTime(int min, int max);
+
+
 // Global event ID
-//int ID = -1;
 int getID();
 int newID();
+
 
 // Event type values
 const int SYSTEM_ARRIVAL = 0;
@@ -59,6 +66,7 @@ typedef struct Event {
   int event_type;       // event type  
   int time_arrival;     // clock time (current_time + time)
 }Event;
+
 // Creates a new event
 Event newEvent(int ID, int event_type, int time_arrival); 
 
@@ -70,10 +78,10 @@ struct CompareTimeArrival {
   }
 };
 
-int getTime(int min, int max);
 
 // Creates a new ID for new event
 int newID();
+
 
 // Load config
 void loadConfig(string filename); 
@@ -86,6 +94,7 @@ void logData(vector<Event> eventLog);
 string printEventType(Event event); 
 
 
+// Component Handlers
 void handleSYSTEM_ARRIVAL(Event &event, priority_queue<Event, vector<Event>, CompareTimeArrival> &eventQueue); 
 void handleSYSTEM_EXIT(Event &event, priority_queue<Event, vector<Event>, CompareTimeArrival> &eventQueue);
 void handleCPU_ARRIVAL(Event &event, priority_queue<Event, vector<Event>, CompareTimeArrival> &eventQueue); 
