@@ -1,12 +1,9 @@
 #include "simulation.h"
 
 
-
 // Calculates if job will leave system or not 
 bool quitSystemProb() {
-  //srand((unsigned) time(0)); 
   int random = rand() % 100 + 1;
-  //cout << "system:" << random << '\n';
   if (random > getQUIT_PROB()) {
     // not leaving system
     return false;
@@ -17,9 +14,7 @@ bool quitSystemProb() {
 
 // Calculates if job will go to network or disk
 bool networkProb() {
-  //srand((unsigned) time(0));
   int random = rand() % 100 + 1;
-  //cout << "network:" << random << '\n';
   if (random > getNETWORK_PROB()) {
     // go to disk
     return false;
@@ -119,6 +114,7 @@ void setRespTimeNETWORK(int respTime) {
   }
 }
 
+
 // Storing total component util time
 void setTotalUtilCPU(int time) {
   totalUtilCPU += time; 
@@ -132,6 +128,8 @@ void setTotalUtilDISK2(int time) {
 void setTotalUtilNETWORK(int time) {
   totalUtilNETWORK += time;
 }
+
+
 // Calcuating component utilization
 double getUtilCPU(int totalUtilCPU) {
   return ((double)totalUtilCPU / (double)getFIN_TIME());
@@ -190,6 +188,7 @@ void setNQ(int size) {
 }
 
 
+// Prints stats into the stats file
 void simStats() {
   ofstream stat("stats.txt");
   
