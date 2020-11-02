@@ -1,8 +1,8 @@
 ---------Max and Avg Queue Size---------
 Event Queue Max Size: 7
 Event Queue Avg Size: 4
-CPU Queue Max Size: 2603
-CPU Queue Avg Size: 1307
+CPU Queue Max Size: 2588
+CPU Queue Avg Size: 1293
 DISK1 Queue Max Size: 1
 DISK1 Queue Avg Size: 0
 DISK2 Queue Max Size: 1
@@ -10,21 +10,21 @@ DISK2 Queue Avg Size: 0
 NETWORK Queue Max Size: 1
 NETWORK Queue Avg Size: 0
 ---------Utilization---------
-CPU Utilization: 0.50636
-DISK1 Utilization: 0.51306
-DISK2 Utilization: 0.02199
-NETWORK Utilization: 0.13643
+CPU Utilization: 0.49985
+DISK1 Utilization: 0.50487
+DISK2 Utilization: 0.02987
+NETWORK Utilization: 0.1434
 ---------Response Time---------
-CPU Max Response Time: 64329
-CPU Avg Response Time: 32172
-DISK1 Max Response Time: 94
-DISK1 Avg Response Time: 34
-DISK2 Max Response Time: 59
-DISK2 Avg Response Time: 32
+CPU Max Response Time: 64074
+CPU Avg Response Time: 31834
+DISK1 Max Response Time: 93
+DISK1 Avg Response Time: 35
+DISK2 Max Response Time: 57
+DISK2 Avg Response Time: 30
 NETWORK Max Response Time: 59
-NETWORK Avg Response Time: 30
+NETWORK Avg Response Time: 34
 ---------Throughput---------
-CPU Throughput: 0.01456
-DISK1 Throughput: 0.00807
-DISK2 Throughput: 0.0002
-NETWORK Throughput: 0.00345
+CPU Throughput: 0.01442
+DISK1 Throughput: 0.00783
+DISK2 Throughput: 0.00027
+NETWORK Throughput: 0.00356

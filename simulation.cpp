@@ -7,23 +7,8 @@
 #include <cstdlib>
 #include <ctime>
 
-#include <nlohmann/json.hpp>
-#include <fstream>
-using json = nlohmann::json;
-
 using namespace std;
 
-
-// Prints priority queue
-void print_queue(priority_queue<Event, vector<Event>, CompareTimeArrival> eventQueue) {
-  priority_queue<Event, vector<Event>, CompareTimeArrival> queue = eventQueue;
-  Event event;
-  while (!queue.empty()) {
-    event = queue.top();
-    cout << "EventID:" << event.ID << " event type:" << event.event_type << " time:" << event.time_arrival << '\n'; 
-    queue.pop();
-  }
-}
 
 
 int main () {
@@ -44,12 +29,13 @@ int main () {
 
     event = eventQueue.top(); 
     eventQueue.pop();
-
-    //current_time = event.time_arrival;
+    
+    // Sets current time to the newest event time arrival 
     setCurrentTime(event.time_arrival); 
 
     cout << "At time: " << event.time_arrival << " Job" << event.ID << " " << printEventType(event) << '\n';
-   // saves event into a vector
+
+    // Saves event into a vector
     captureEvent(event);
 
     switch(event.event_type) {

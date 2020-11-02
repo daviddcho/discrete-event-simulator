@@ -1,10 +1,12 @@
 #include "simulation.h"
 
+
 // Device status identifiers
 bool CPU_BUSY;
 bool DISK1_BUSY;
 bool DISK2_BUSY;
 bool NETWORK_BUSY;
+
 
 // My component queues
 queue<Event> CPU_queue;
@@ -31,9 +33,11 @@ void handleSYSTEM_ARRIVAL(Event &event, priority_queue<Event, vector<Event>, Com
   eventQueue.push(newEvent(newID(), SYSTEM_ARRIVAL, getTime(getARRIVE_MIN(), getARRIVE_MAX())));
 }
 
+
 void handleSYSTEM_EXIT(Event &event, priority_queue<Event, vector<Event>, CompareTimeArrival> &eventQueue) {
   // do nothing its leaving the system
 }
+
 
 void handleCPU_ARRIVAL(Event &event, priority_queue<Event, vector<Event>, CompareTimeArrival> &eventQueue) {
   // CPU is now busy
@@ -47,6 +51,7 @@ void handleCPU_ARRIVAL(Event &event, priority_queue<Event, vector<Event>, Compar
   // Create a new CPU_EXIT event (telling process to leave at finishing time)  
   eventQueue.push(newEvent(event.ID , CPU_EXIT, time_arrival));
 }
+
 
 void handleCPU_EXIT(Event &event, priority_queue<Event, vector<Event>, CompareTimeArrival> &eventQueue) {
   // CPU is now not busy
@@ -110,6 +115,7 @@ void handleCPU_EXIT(Event &event, priority_queue<Event, vector<Event>, CompareTi
   }
 }
 
+
 void handleDISK1_ARRIVAL(Event &event, priority_queue<Event, vector<Event>, CompareTimeArrival> &eventQueue) {
   // DISK1 is busy
   DISK1_BUSY = true;
@@ -122,6 +128,7 @@ void handleDISK1_ARRIVAL(Event &event, priority_queue<Event, vector<Event>, Comp
   // Create a new DISK1 event (telling process to leave at finishing time)
   eventQueue.push(newEvent(event.ID, DISK1_EXIT, time_arrival));
 }
+
 
 void handleDISK1_EXIT(Event &event, priority_queue<Event, vector<Event>, CompareTimeArrival> &eventQueue) {
   // process exits disk, disk no longer busy
@@ -153,6 +160,7 @@ void handleDISK1_EXIT(Event &event, priority_queue<Event, vector<Event>, Compare
   }
 }
 
+
 void handleDISK2_ARRIVAL(Event &event, priority_queue<Event, vector<Event>, CompareTimeArrival> &eventQueue) {
   // DISK2 is busy
   DISK2_BUSY = true;
@@ -165,6 +173,7 @@ void handleDISK2_ARRIVAL(Event &event, priority_queue<Event, vector<Event>, Comp
   // Create a new DISK2 EXIT event (telling process to leave at finishing time)
   eventQueue.push(newEvent(event.ID, DISK2_EXIT, time_arrival));
 }
+
 
 void handleDISK2_EXIT(Event &event, priority_queue<Event, vector<Event>, CompareTimeArrival> &eventQueue) {
   // DISK2 is not busy
@@ -196,6 +205,7 @@ void handleDISK2_EXIT(Event &event, priority_queue<Event, vector<Event>, Compare
 
 }
 
+
 void handleNETWORK_ARRIVAL(Event &event, priority_queue<Event, vector<Event>, CompareTimeArrival> &eventQueue) {
   // NETWORK is busy
   NETWORK_BUSY = true;
@@ -208,6 +218,7 @@ void handleNETWORK_ARRIVAL(Event &event, priority_queue<Event, vector<Event>, Co
   // Create a new NETWORK EXIT event (telling process to leave at finishing time)
   eventQueue.push(newEvent(event.ID, NETWORK_EXIT, time_arrival));
 }
+
 
 void handleNETWORK_EXIT(Event &event, priority_queue<Event, vector<Event>, CompareTimeArrival> &eventQueue) {
   // NETWORK is not busy
@@ -238,6 +249,8 @@ void handleNETWORK_EXIT(Event &event, priority_queue<Event, vector<Event>, Compa
   }
 
 }
+
+
 void handleSIMULATION_END(Event &event, priority_queue<Event, vector<Event>, CompareTimeArrival> &eventQueue) {
   // writes a log file
   logData(getEventLog());

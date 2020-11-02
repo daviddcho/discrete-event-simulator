@@ -3,7 +3,7 @@
 #include <fstream>
 using json = nlohmann::json;
 
-
+// Vector that stores event log information
 vector<Event> eventLog;
 
 
@@ -83,7 +83,20 @@ void logData(vector<Event> eventLog) {
   writelog.close();
 }
 
-
+// Returns event log vector
 vector<Event> getEventLog() {
   return eventLog;
 }
+
+// Prints priority queue
+void print_queue(priority_queue<Event, vector<Event>, CompareTimeArrival> eventQueue) {
+  priority_queue<Event, vector<Event>, CompareTimeArrival> queue = eventQueue;
+  Event event;
+  while (!queue.empty()) {
+    event = queue.top();
+    cout << "EventID:" << event.ID << " event type:" << event.event_type << " time:" << event.time_arrival << '\n'; 
+    queue.pop();
+  }
+}
+
+

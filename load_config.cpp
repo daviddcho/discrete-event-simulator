@@ -44,6 +44,8 @@ void loadConfig(string filename) {
   NETWORK_MAX = config["NETWORK_MAX"];
 }
 
+
+// Get functions for all the config variables
 int getSEED() {
   return SEED;    
 }

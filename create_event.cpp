@@ -1,8 +1,6 @@
 #include "simulation.h"
 
 
-
-
 // Global event ID
 int ID = -1;
 
@@ -15,12 +13,13 @@ Event newEvent(int ID, int event_type, int time_arrival) {
   return event;
 }
 
-// creates a new ID for new event
+// Creates a new ID for new event
 int newID() {
   ID++;
   return ID;
 }
 
+// Returns the current ID
 int getID() {
   return ID;
 }

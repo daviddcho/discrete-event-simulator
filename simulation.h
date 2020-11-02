@@ -130,16 +130,8 @@ void setNQ(int size);
 void simStats();
 
 
-
-
-
-
-
-
-
-
-
-
+// Print priority queue (used for testing)
+void print_queue(priority_queue<Event, vector<Event>, CompareTimeArrival> eventQueue); 
 
 
 #endif
