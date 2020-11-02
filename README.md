@@ -1,10 +1,10 @@
 # Discrete Event Simulator
 
 ## Usage 
-`
+```
 git clone https://github.com/daviddcho/discrete-event-simulator.git
 make && ./mysim
-`
+```
 ## Description 
 The simulation is a model of how the operating system organizes and orders the use of its resources.
 
